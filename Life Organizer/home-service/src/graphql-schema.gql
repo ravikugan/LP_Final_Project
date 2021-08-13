@@ -1,0 +1,59 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Bill {
+  name: String!
+  payment: Float!
+}
+
+type Grocery {
+  name: String!
+  count: Float!
+}
+
+type Repair {
+  name: String!
+  task: String!
+}
+
+type Vehicle {
+  name: String!
+  task: String!
+}
+
+type Home {
+  username: String!
+  id: String!
+  date: DateTime!
+  task: String!
+  groceries: [Grocery!]
+  bills: [Bill!]
+  vehicles: [Vehicle!]
+  repairs: [Repair!]
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  home(id: String!): Home!
+}
+
+type Mutation {
+  createHome(createHomeInput: CreateHomeInput!): Home!
+  updateHome(updateHomeInput: CreateHomeInput!): Home!
+  removeHome(id: String!): Home!
+}
+
+input CreateHomeInput {
+  username: String!
+  id: String!
+  date: DateTime!
+  task: String!
+  taskName: String!
+  amount: Float!
+  place: String!
+}

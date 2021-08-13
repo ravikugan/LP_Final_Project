@@ -1,26 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { CreateHomeInput } from './dto/create-home.input';
 import { UpdateHomeInput } from './dto/update-home.input';
+import { HomeRepository } from './home.repository';
 
 @Injectable()
 export class HomeService {
+  constructor(private homeRepository:HomeRepository){}
+
   create(createHomeInput: CreateHomeInput) {
-    return 'This action adds a new home';
+    return this.homeRepository.create(createHomeInput);
   }
 
   findAll() {
-    return `This action returns all home`;
+    return this.homeRepository.getAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} home`;
+  findOne(id: string) {
+    return this.homeRepository.getById(id);
   }
 
-  update(id: number, updateHomeInput: UpdateHomeInput) {
-    return `This action updates a #${id} home`;
+  update(id: string, updateHomeInput: CreateHomeInput) {
+    return this.homeRepository.update(id,updateHomeInput);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} home`;
+  remove(id: string) {
+    return this.homeRepository.delete(id);
   }
 }

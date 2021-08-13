@@ -19,17 +19,17 @@ export class HomeResolver {
   }
 
   @Query(() => Home, { name: 'home' })
-  findOne(@Args('id') id: string) {
+  findOne(@Args('id', { type: () => Int }) id: number) {
     return this.homeService.findOne(id);
   }
 
   @Mutation(() => Home)
-  updateHome(@Args('updateHomeInput') updateHomeInput: CreateHomeInput) {
+  updateHome(@Args('updateHomeInput') updateHomeInput: UpdateHomeInput) {
     return this.homeService.update(updateHomeInput.id, updateHomeInput);
   }
 
   @Mutation(() => Home)
-  removeHome(@Args('id') id: string) {
+  removeHome(@Args('id', { type: () => Int }) id: number) {
     return this.homeService.remove(id);
   }
 }

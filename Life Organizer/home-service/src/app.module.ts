@@ -1,11 +1,13 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { GraphQLModule } from '@nestjs/graphql';
+import { MongooseModule } from '@nestjs/mongoose';
+import { join } from 'path';
+import { MONGODB_CONNECTION } from './app.properties';
 import { HomeModule } from './home/home.module';
 
 @Module({
-  imports: [HomeModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [HomeModule,MongooseModule.forRoot(MONGODB_CONNECTION),GraphQLModule.forRoot(
+    {autoSchemaFile: join(process.cwd(), 'src/graphql-schema.gql')}
+  )]
 })
 export class AppModule {}
