@@ -9,7 +9,6 @@ export class HomeRepository{
     constructor(@InjectModel(Home.name) private homeModel:Model<HomeDocument>){}
 
     async create(homeCreateDto:CreateHomeInput):Promise<Home>{
-        let home = new Home
         let newHome = new this.homeModel(homeCreateDto)
         return await newHome.save()
     }

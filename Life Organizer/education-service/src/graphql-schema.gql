@@ -1,0 +1,38 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Education {
+  _id: String!
+  userName: String!
+  date: String!
+  type: String!
+  taskName: String!
+  notes: String!
+}
+
+type Query {
+  Alleducation: [Education!]!
+  getEducation(id: String!): Education!
+}
+
+type Mutation {
+  createEducation(createEducationInput: CreateEducationInput!): Education!
+  updateEducation(updateEducationInput: UpdateEducationInput!, id: String!): Education!
+  removeEducation(id: String!): Education!
+}
+
+input CreateEducationInput {
+  userName: String!
+  date: String!
+  type: String!
+  taskName: String!
+  notes: String
+}
+
+input UpdateEducationInput {
+  date: String
+  type: String
+  taskName: String
+  notes: String
+}
