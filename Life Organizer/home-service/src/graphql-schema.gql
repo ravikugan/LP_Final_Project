@@ -2,35 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Bill {
-  name: String!
-  payment: Float!
-}
-
-type Grocery {
-  name: String!
-  count: Float!
-}
-
-type Repair {
-  name: String!
-  task: String!
-}
-
-type Vehicle {
-  name: String!
-  task: String!
-}
-
 type Home {
   username: String!
-  id: String!
+  _id: String!
   date: DateTime!
-  task: String!
-  groceries: [Grocery!]
-  bills: [Bill!]
-  vehicles: [Vehicle!]
-  repairs: [Repair!]
+  type: String!
+  taskName: String!
+  payment: Float!
+  toDo: String!
 }
 
 """
@@ -39,7 +18,8 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Query {
-  home(id: String!): Home!
+  getAllHome: [Home!]!
+  findHome(id: String!): Home!
 }
 
 type Mutation {
@@ -50,10 +30,10 @@ type Mutation {
 
 input CreateHomeInput {
   username: String!
-  id: String!
+  _id: String
   date: DateTime!
-  task: String!
+  type: String!
   taskName: String!
-  amount: Float!
-  place: String!
+  payment: Float
+  toDo: String
 }

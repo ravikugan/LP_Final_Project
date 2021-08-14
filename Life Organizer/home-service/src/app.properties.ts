@@ -1,1 +1,1 @@
-export const MONGODB_CONNECTION = "mongodb+srv://admin:admin@cluster0.zxa3o.mongodb.net/petzC?retryWrites=true&w=majority"
+export const MONGODB_CONNECTION = "mongodb+srv://admin:admin@cluster0.zxa3o.mongodb.net/organizer?retryWrites=true&w=majority"

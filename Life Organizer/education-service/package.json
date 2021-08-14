@@ -1,5 +1,5 @@
 {
-  "name": "home-service",
+  "name": "education-service",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -21,19 +21,12 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@apollo/gateway": "^0.35.1",
     "@nestjs/common": "^7.6.15",
     "@nestjs/core": "^7.6.15",
-    "@nestjs/graphql": "^8.0.2",
-    "@nestjs/mongoose": "^8.0.0",
     "@nestjs/platform-express": "^7.6.15",
-    "apollo-server-express": "^2.25.2",
-    "graphql": "^15.5.1",
-    "mongoose": "^5.13.5",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.6.6",
-    "ts-morph": "^11.0.3"
+    "rxjs": "^6.6.6"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.6.0",

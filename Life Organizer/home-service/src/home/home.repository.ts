@@ -9,21 +9,26 @@ export class HomeRepository{
     constructor(@InjectModel(Home.name) private homeModel:Model<HomeDocument>){}
 
     async create(homeCreateDto:CreateHomeInput):Promise<Home>{
+        let home = new Home
         let newHome = new this.homeModel(homeCreateDto)
         return await newHome.save()
     }
 
     async getAll():Promise<Home[]>{
-        return await this.homeModel.find()
+
+        let home=  await this.homeModel.find()
+        return home
+        //return await this.homeModel.find()
     }
 
     async getById(id:string):Promise<Home>{
-        return await this.homeModel.findById(id)
+        let home =  await this.homeModel.findById(id)
+        return home
     }
 
     async update(id:string,homeUpdateDto:CreateHomeInput):Promise<Home>{
         await this.homeModel.findByIdAndUpdate(id,homeUpdateDto)
-        return await this.getById(id)
+        return await this.getById(id) 
     }
 
     async delete(id:string){

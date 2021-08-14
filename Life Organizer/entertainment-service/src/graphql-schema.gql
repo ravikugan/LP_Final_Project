@@ -1,0 +1,46 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Entertainment {
+  _id: String!
+  userName: String!
+  date: DateTime!
+  type: String!
+  with: String!
+  taskName: String!
+  toDo: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  allEntertainment: [Entertainment!]!
+  getEntertainment(id: String!): Entertainment!
+}
+
+type Mutation {
+  createEntertainment(createEntertainmentInput: CreateEntertainmentInput!): Entertainment!
+  updateEntertainment(id: String!, updateEntertainmentInput: UpdateEntertainmentInput!): Entertainment!
+  removeEntertainment(id: String!): Entertainment!
+}
+
+input CreateEntertainmentInput {
+  userName: String!
+  date: DateTime!
+  type: String!
+  with: String!
+  taskName: String!
+  toDo: String!
+}
+
+input UpdateEntertainmentInput {
+  date: DateTime
+  type: String
+  with: String
+  taskName: String
+  toDo: String
+}
