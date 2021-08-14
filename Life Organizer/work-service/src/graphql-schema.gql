@@ -1,0 +1,47 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Work {
+  _id: String!
+  userName: String!
+  date: DateTime!
+  type: String!
+  taskName: String!
+  toDo: String!
+  notes: String
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  allWork: [Work!]!
+  findWork(id: String!): Work!
+}
+
+type Mutation {
+  createWork(createWorkInput: CreateWorkInput!): Work!
+  updateWork(updateWorkInput: UpdateWorkInput!, id: String!): Work!
+  removeWork(id: String!): Work!
+}
+
+input CreateWorkInput {
+  userName: String!
+  date: DateTime!
+  type: String!
+  taskName: String!
+  toDo: String!
+  notes: String
+}
+
+input UpdateWorkInput {
+  userName: String
+  date: DateTime
+  type: String
+  taskName: String
+  toDo: String
+  notes: String
+}
