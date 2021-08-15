@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Int, ResolveReference } from '@nestjs/graphql';
 import { EntertainmentService } from './entertainment.service';
 import { Entertainment } from './entities/entertainment.entity';
 import { CreateEntertainmentInput } from './dto/create-entertainment.input';
@@ -31,5 +31,10 @@ export class EntertainmentResolver {
   @Mutation(() => Entertainment)
   removeEntertainment(@Args('id') id: string) {
     return this.entertainmentService.remove(id);
+  }
+
+  @ResolveReference()
+  resolveReference(ref:{__type:"entertainment",id:string}){
+    return this.entertainmentService.findOne(ref.id)
   }
 }

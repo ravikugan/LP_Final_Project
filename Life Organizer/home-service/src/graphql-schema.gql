@@ -2,9 +2,19 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+directive @key(fields: String!) on OBJECT | INTERFACE
+
+directive @extends on OBJECT | INTERFACE
+
+directive @external on OBJECT | FIELD_DEFINITION
+
+directive @requires(fields: String!) on FIELD_DEFINITION
+
+directive @provides(fields: String!) on FIELD_DEFINITION
+
 type Home {
+  _id: ID!
   username: String!
-  _id: String!
   date: DateTime!
   type: String!
   taskName: String!
@@ -24,13 +34,12 @@ type Query {
 
 type Mutation {
   createHome(createHomeInput: CreateHomeInput!): Home!
-  updateHome(updateHomeInput: CreateHomeInput!): Home!
+  updateHome(updateHomeInput: CreateHomeInput!, id: String!): Home!
   removeHome(id: String!): Home!
 }
 
 input CreateHomeInput {
   username: String!
-  _id: String
   date: DateTime!
   type: String!
   taskName: String!

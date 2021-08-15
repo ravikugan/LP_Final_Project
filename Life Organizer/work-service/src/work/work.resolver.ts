@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Int, ResolveReference } from '@nestjs/graphql';
 import { WorkService } from './work.service';
 import { Work } from './entities/work.entity';
 import { CreateWorkInput } from './dto/create-work.input';
@@ -31,5 +31,10 @@ export class WorkResolver {
   @Mutation(() => Work)
   removeWork(@Args('id') id: string) {
     return this.workService.remove(id);
+  }
+
+  @ResolveReference()
+  resolveReference(ref:{__type:"work",id:string}){
+    return this.workService.findOne(ref.id)
   }
 }

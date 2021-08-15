@@ -1,12 +1,13 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { Directive ,ObjectType, Field, Int, ID } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 export type EntertainmentDocument = Entertainment & Document
 
 @ObjectType()
+@Directive('@key(fields: "_id")')
 @Schema()
 export class Entertainment {
-    @Field()
+    @Field((type)=>ID)
     _id:string
     @Field()
     @Prop()

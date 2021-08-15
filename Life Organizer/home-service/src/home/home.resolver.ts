@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Int, ResolveReference } from '@nestjs/graphql';
 import { HomeService } from './home.service';
 import { Home } from './entities/home.entity';
 import { CreateHomeInput } from './dto/create-home.input';
@@ -32,4 +32,10 @@ export class HomeResolver {
   removeHome(@Args('id') id: string) {
     return this.homeService.remove(id);
   }
+
+  @ResolveReference()
+  resolveReference(ref:{__type:"home",id:string}){
+    return this.homeService.findOne(ref.id)
+  }
+  
 }

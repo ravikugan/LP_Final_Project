@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Int, ResolveReference } from '@nestjs/graphql';
 import { EducationService } from './education.service';
 import { Education } from './entities/education.entity';
 import { CreateEducationInput } from './dto/create-education.input';
@@ -31,5 +31,10 @@ export class EducationResolver {
   @Mutation(() => Education)
   removeEducation(@Args('id') id: string) {
     return this.educationService.remove(id);
+  }
+
+  @ResolveReference()
+  resolveReference(ref:{__typename:string,id:string}){
+    return this.educationService.findOne(ref.id)
   }
 }
